@@ -26,4 +26,18 @@ defmodule StringCalculatorTest do
   test "should return 3 when given 1\n2" do
     assert StringCalculator.add("1\n2") == 3
   end
+
+  test "should sum up 4 numbers" do
+    assert StringCalculator.add("1\n2,3\n4") == 10
+  end
+
+  test "should throw an exception when string contains a negative number" do
+    assert_raise RuntimeError, "Negatives not allowed: -2, -3", fn ->
+      StringCalculator.add("1,-2,-3")
+    end
+  end
+
+  test "should ignore numbers larger than 1000" do
+    assert StringCalculator.add("1,2,1001") == 3
+  end
 end
