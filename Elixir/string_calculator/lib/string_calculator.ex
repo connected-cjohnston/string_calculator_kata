@@ -1,13 +1,26 @@
 defmodule StringCalculator do
-  def add(input) when input == "", do: 0
+  def add("") do
+    0
+  end
 
   def add(input) do
-    if String.contains?(input, ",") or String.contains?(input, "\n") do
-      foo = String.replace(input, "\n", ",", global: true)
-      integers = String.split(foo, ",")
-      String.to_integer(Enum.at(integers, 0)) + String.to_integer(Enum.at(integers, 1))
-    else
-      String.to_integer(input)
-    end
+    input
+    |> split()
+    |> convert_to_integers()
+    |> sum_values()
+  end
+
+  defp split(string) do
+    string |> String.split([",", "\n"])
+  end
+
+  defp convert_to_integers(list) do
+    list |> Enum.map(&String.to_integer(&1))
+  end
+
+  defp sum_values(list) do
+    Enum.reduce(list, 0, fn x, sum ->
+      sum + x
+    end)
   end
 end
