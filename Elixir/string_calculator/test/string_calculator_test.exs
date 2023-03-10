@@ -9,6 +9,8 @@ defmodule StringCalculatorTest do
   # 8. A single char delimiter can be defined on the first line starting with `//` (e.g `//#\n1#2` for a ‘#’ as the delimiter)
   # 9. A multi char delimiter can be defined on the first line starting with `//` (e.g. `//###\n1###2` for ‘###’ as the delimiter)
 
+  # Reference for this attempt -- https://github.com/andreab91/StringCalculatorKata
+
   use ExUnit.Case
 
   test "should return 0 when given an empty string" do
