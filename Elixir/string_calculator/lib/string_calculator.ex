@@ -3,17 +3,23 @@ defmodule StringCalculator do
     0
   end
 
+  def add("//" <> string_without_header) do
+    [delimiter_group, string] = String.split(string_without_header, "\n")
+
+    string |> add(delimiter_group)
+  end
+
   def add(input) do
+    input |> add([",", "\n"])
+  end
+
+  defp add(input, delimiters) do
     input
-    |> split()
+    |> String.split(delimiters)
     |> convert_to_integers()
     |> check_for_negatives()
     |> ignore_big()
     |> sum_values()
-  end
-
-  defp split(string) do
-    string |> String.split([",", "\n"])
   end
 
   defp convert_to_integers(list) do

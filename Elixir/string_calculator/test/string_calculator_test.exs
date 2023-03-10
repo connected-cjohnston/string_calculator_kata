@@ -40,4 +40,12 @@ defmodule StringCalculatorTest do
   test "should ignore numbers larger than 1000" do
     assert StringCalculator.add("1,2,1001") == 3
   end
+
+  test "should work with single character custom delimiter" do
+    assert StringCalculator.add("//&\n1&2&3") == 6
+  end
+
+  test "should work with multiple character custom delimiter" do
+    assert StringCalculator.add("//***\n1***2***3")
+  end
 end
