@@ -1,7 +1,10 @@
 defmodule StringCalculator do
-  def add("") do
-    0
-  end
+  @moduledoc """
+    Functions for various math operations on a string of integers
+    separated by a delimiter
+  """
+
+  def add(""), do: 0
 
   def add("//" <> string_without_header) do
     [delimiter_group, string] = String.split(string_without_header, "\n")
@@ -41,8 +44,6 @@ defmodule StringCalculator do
   end
 
   defp sum_values(list) do
-    Enum.reduce(list, 0, fn x, sum ->
-      sum + x
-    end)
+    Enum.sum(list)
   end
 end
